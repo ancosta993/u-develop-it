@@ -36,7 +36,6 @@ app.get('/api/candidates', (req, res) => {
 });
 
 
-
 // GET a single candidate
 app.get('/api/candidate/:id', (req, res) => {
    const sql = `SELECT * FROM candidates WHERE id = ?`
