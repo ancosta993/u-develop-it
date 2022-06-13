@@ -5,12 +5,15 @@ const db = require('./db/connection.js');
 const inputCheck = require('./utils/inputCheck');
 
 const apiRoutes = require('./routes/apiRoutes');
-// Middleware
-app.use('/api', apiRoutes);
 
 // Express middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+
+// Middleware
+app.use('/api', apiRoutes);
+
 
 
 // Default response for any other request (Not Found)
@@ -21,7 +24,7 @@ app.use((req, res)=>{
 
 // start server after DB connection
 
-db.connection(err => {
+db.connect(err => {
    if (err) throw err;
    console.log(`Database Connected.`);
    app.listen(PORT, () => {
